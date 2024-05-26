@@ -1,6 +1,11 @@
 import { useFormik } from "formik";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateloggedin } from "./loginSlice";
 function Login(){
+    var {isLoggedin}=useSelector(state=>state.loginReducer)
+    var dispatch=useDispatch()
+    
    var loginForm= useFormik({
         initialValues:{
             username:"",
@@ -9,7 +14,19 @@ function Login(){
 
         },
         onSubmit:(values)=>{
-            console.log(values)
+            fetch("http://localhost:4000",{
+                method:"POST",
+                headers:{
+                    "Content-Type": "application/json",
+                },
+                body:JSON.stringify(values)
+            }).then(res=>{return res.json()}).then(data=>{
+               if(data.msg==="loginsuccess"){
+                window.localStorage.setItem("token",data.token)
+                dispatch(updateloggedin(true))
+                   
+               }
+            })
         }
     })
     return (

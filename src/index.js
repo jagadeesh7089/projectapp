@@ -5,10 +5,32 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Posts from './features/posts/posts';
+import Courses from './features/courses/courses';
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App></App>,
+    children:[
+      {
+      path:"/posts",
+      element:<Posts></Posts>
+    },
+    {
+      path:"/courses",
+      element:<Courses></Courses>
+    }
+  ]
+  },
+]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <App />
+    <RouterProvider router={router}></RouterProvider>
     </Provider>
  
 );

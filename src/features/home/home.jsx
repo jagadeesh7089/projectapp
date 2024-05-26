@@ -1,8 +1,15 @@
 import React from "react";
+
+import { Outlet } from "react-router-dom";
+import Navbar from "../served/navbar";
  function Home(){
+    
     return (
         <div>
-            <h1>Home</h1>
+            
+            <Navbar></Navbar>
+           <Outlet></Outlet>
+            
         </div>
     )
  }
