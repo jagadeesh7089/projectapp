@@ -5,8 +5,8 @@ function Posts(){
    var {data}= useGetAllpostsQuery()
    
     return(
-        <div>
-            <h1>posts</h1>
+        <div className="border border-warning m-2 p-3">
+            <h1 className="text-success ">Posts</h1>
             <div>
                 {
                     data?.map(post=>{

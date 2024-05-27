@@ -12,7 +12,7 @@ function Navbar(){
     }
 
     return (
-        <div>
+        <div className="">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <Link class="navbar-brand" to="/">Navbar</Link>
@@ -21,14 +21,14 @@ function Navbar(){
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
+        <li class="nav-item mx-3">
           <Link class="nav-link active" aria-current="page" to="posts">Posts</Link>
         </li>
-        <li class="nav-item">
-          <Link class="nav-link active" aria-current="page" to="courses">course</Link>
+        <li class="nav-item mx-3">
+          <Link class="nav-link active" aria-current="page" to="courses">Course</Link>
         </li>
         
-         <button onClick={()=>{logout()}}>Logout</button>
+         <button onClick={()=>{logout()}} className="btn btn-danger mx-5">Logout</button>
        
 
         
