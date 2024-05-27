@@ -13,6 +13,7 @@ import Posts from './features/posts/posts';
 import Courses from './features/courses/courses';
 import Home from './features/home/home';
 import Main from './features/home/Main';
+import Products from './features/products/products';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
     {
       path:"/courses",
       element:<Courses></Courses>
+    },
+    {
+      path:"/products",
+      element:<Products></Products>
     }
   ]
   },

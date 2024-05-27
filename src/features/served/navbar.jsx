@@ -27,6 +27,9 @@ function Navbar(){
         <li class="nav-item mx-3">
           <Link class="nav-link active" aria-current="page" to="courses">Course</Link>
         </li>
+        <li class="nav-item mx-3">
+          <Link class="nav-link active" aria-current="page" to="products">Products</Link>
+        </li>
         
          <button onClick={()=>{logout()}} className="btn btn-danger mx-5">Logout</button>
        
