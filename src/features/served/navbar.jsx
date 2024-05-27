@@ -1,12 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { updateloggedin } from "../login/loginSlice";
 function Navbar(){
     var dispatch=useDispatch()
+    var navigate = useNavigate()
     function logout(){
         window.localStorage.removeItem("token")
         dispatch(updateloggedin(false))
+        navigate('/')
     }
 
     return (

@@ -30,12 +30,12 @@ function Login(){
         }
     })
     return (
-        <div>
-            <h1>Login</h1>
+        <div className="bg bg-info w-50 p-5 text-center shadow-lg ">
+            <h1 className="text-primary-emphasis px-5">Login</h1>
             <form onSubmit={loginForm.handleSubmit}>
                 <input type="text" placeholder="username" {...loginForm.getFieldProps("username")}/><br/><br/>
                 <input type="text" placeholder="password" {...loginForm.getFieldProps("password")}/><br/><br/>
-                <button>Login</button>
+                <button className=" btn btn-primary px-4">Login</button>
                 
             </form>
 

@@ -6,7 +6,6 @@ import Navbar from "../served/navbar";
     
     return (
         <div>
-            
             <Navbar></Navbar>
            <Outlet></Outlet>
             
