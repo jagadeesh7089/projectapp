@@ -1,4 +1,58 @@
 body{
-    background-color:rgb(219, 219, 252)
+    background-color:rgb(238, 238, 241)
 
+}
+.card{
+    margin-top:8%;
+    margin-left: 35%;
+    background: rgb(164,34,195);
+background: linear-gradient(0deg, rgba(164,34,195,1) 38%, rgba(201,53,222,1) 100%);
+height: 500px;
+border-radius: 30px;
+}
+.logo{
+    font-size: 50px;
+    background-color: rgb(244, 248, 252);
+    padding: 10px 20px;
+    border-radius: 50%;
+    margin-top: 20% ;
+   
+    
+}
+ ::placeholder{
+    color:white
+}
+input{
+    margin-left:5%;
+    width:70%;
+    padding-left: 10px;
+    background-color:rgb(219, 104, 248); ;
+    border: 0;
+    outline:none;
+    border-bottom: 2px solid rgb(238, 66, 244);
+
+    
+}
+#inp{
+    margin-top: 10%;
+}
+.but{
+    color: black;
+    background-color: rgb(254, 127, 231);
+    margin-left:35%;
+    padding: 8px;
+    border-radius: 10px;
+    border: 2px solid rgb(255, 36, 164);
+}
+.icon{
+    font-size: 30px;
+    color:rgb(253, 189, 226);
+    margin-left: 10px;
+    text-align: center;
+    
+}
+.pass{
+    color: rgb(226, 223, 223);
+    text-align: center;
+    margin-top: 8%;
 }

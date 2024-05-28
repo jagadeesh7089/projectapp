@@ -7,11 +7,12 @@ function Products(){
             <div className="d-flex flex-wrap">
             {
                 data?.map(product=>{
-                    return <div className="w-25 m-5 border d-flex flex-column ">
-                          <img src={product.image} className="w-75"/>
+                    return <div className="w-25 m-5 border border-2 d-flex flex-column justify-content-between bg bg-light shadow-lg p-5">
+                          <img src={product.image} className="h-50"/>
                           <p> Tittle:{product.title.slice(0,20)}</p>
                           <p> Price:${product.price}</p>
-                          <button>Add to Cart</button>
+                          <p>Rating: {product.rating.rate}</p>
+                          <button className="btn btn-success">Add to Cart</button>
                      </div>
                 })
             }

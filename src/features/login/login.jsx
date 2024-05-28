@@ -30,15 +30,30 @@ function Login(){
         }
     })
     return (
-        <div className="bg bg-info w-50 p-5 text-center shadow-lg ">
-            <h1 className="text-primary-emphasis px-5">Login</h1>
+        <div>
+            <div className="w-25 card shadow-lg">
+            <div className=" mt-5 text-center">
+            <i className="bi bi-image-alt  logo" ></i> 
+            <h3 className="text-light m-3">LOG IN</h3>
+            </div>
+            <div>
             <form onSubmit={loginForm.handleSubmit}>
-                <input type="text" placeholder="username" {...loginForm.getFieldProps("username")}/><br/><br/>
-                <input type="text" placeholder="password" {...loginForm.getFieldProps("password")}/><br/><br/>
-                <button className=" btn btn-primary px-4">Login</button>
+                <div id="inp">
+                <div>
+                <i className="bi bi-person-fill icon"></i>   
+                <input type="text" placeholder="Username" {...loginForm.getFieldProps("username")}/><br/><br/>
+                </div>
+                <div>
+                <i className="bi bi-lock-fill icon"></i>
+                <input type="password"  placeholder="Password" {...loginForm.getFieldProps("password")}/><br/><br/>
+                </div>
+                </div>
+                <button className="px-4 but">Login</button>
                 
             </form>
-
+            </div>
+            <div className="pass">forgotpassword?</div>
+            </div>
         </div>
     )
 }
