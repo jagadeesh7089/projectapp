@@ -17,6 +17,7 @@ import Products from './features/products/products';
 import Manager from './features/manager/manager';
 import Agent from './features/agent/agent';
 import Customer from './features/customer/customer';
+import AgentForm from './features/agent/agentform';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,7 +30,13 @@ const router = createBrowserRouter([
       },
       {
         path:"/agent",
-        element:<Agent></Agent>
+        element:<Agent></Agent>,
+        children:[
+          {
+            path:"/agent/agentform",
+            element:<AgentForm></AgentForm>
+          }
+        ]
 
       },
       {
