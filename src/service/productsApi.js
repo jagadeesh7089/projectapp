@@ -7,9 +7,9 @@ export const productsApi = createApi({
     {
          baseUrl: 'http://localhost:4000/products',
          prepareHeaders:(headers,{getState})=>{
-            var prouser=window.localStorage.getItem("user");
-            console.log("token in Api",JSON.parse(prouser.token))
-            // headers.set("token",prouser.token)
+            var token=JSON.parse(window.localStorage.getItem("user")).token
+            console.log("token in Api",token)
+            headers.set("token",token)
             return headers
          }
 
