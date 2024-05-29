@@ -20,7 +20,7 @@ border-radius: 30px;
     
 }
  ::placeholder{
-    color:white
+    color: rgb(226, 223, 223)
 }
 input{
     margin-left:5%;
