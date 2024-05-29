@@ -21,9 +21,11 @@ function Login(){
                 },
                 body:JSON.stringify(values)
             }).then(res=>{return res.json()}).then(data=>{
+                console.log(data)
                if(data.msg==="loginsuccess"){
-                window.localStorage.setItem("token",data.token)
-                dispatch(updateloggedin(true))
+                window.localStorage.setItem("user",JSON.stringify(data))
+                
+                dispatch(updateloggedin({status:true,user:data}))
                    
                }
             })

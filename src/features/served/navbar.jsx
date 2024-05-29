@@ -1,12 +1,13 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { updateloggedin } from "../login/loginSlice";
 function Navbar(){
+   var {user}=useSelector(state=>state.loginReducer)
     var dispatch=useDispatch()
     var navigate = useNavigate()
     function logout(){
-        window.localStorage.removeItem("token")
+        window.localStorage.removeItem("user")
         dispatch(updateloggedin(false))
         navigate('/')
     }
@@ -22,11 +23,9 @@ function Navbar(){
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item mx-3">
-          <Link class="nav-link active" aria-current="page" to="posts">Posts</Link>
+          <Link class="nav-link active" aria-current="page" to={`/${user.role}`}>Mydashboard</Link>
         </li>
-        <li class="nav-item mx-3">
-          <Link class="nav-link active" aria-current="page" to="courses">Course</Link>
-        </li>
+        
         <li class="nav-item mx-3">
           <Link class="nav-link active" aria-current="page" to="products">Products</Link>
         </li>

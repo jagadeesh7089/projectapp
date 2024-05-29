@@ -14,16 +14,29 @@ import Courses from './features/courses/courses';
 import Home from './features/home/home';
 import Main from './features/home/Main';
 import Products from './features/products/products';
+import Manager from './features/manager/manager';
+import Agent from './features/agent/agent';
+import Customer from './features/customer/customer';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
     children:[
-      // {
-      //   path:"/",
-      //   element:<Main></Main>
+      {
+        path:"/manager",
+        element:<Manager></Manager>
 
-      // },
+      },
+      {
+        path:"/agent",
+        element:<Agent></Agent>
+
+      },
+      {
+        path:"/customer",
+        element:<Customer></Customer>
+
+      },
       {
       path:"/posts",
       element:<Posts></Posts>
