@@ -1,13 +1,22 @@
 body{
-    background-color:rgb(238, 238, 241)
+   
+    overflow-x: hidden;
+
+    /* width: 100vw; */
+    background: rgb(235, 195, 245);
+    background: rgb(227, 213, 231);
+   
 
 }
 .card{
     margin-top:8%;
+   
     margin-left: 35%;
     background: rgb(164,34,195);
 background: linear-gradient(0deg, rgba(164,34,195,1) 38%, rgba(201,53,222,1) 100%);
-height: 500px;
+
+height:500px;
+
 border-radius: 30px;
 }
 .logo{
@@ -55,4 +64,10 @@ input{
     color: rgb(226, 223, 223);
     text-align: center;
     margin-top: 8%;
+
 }
+/* .in{
+    width:100%;
+    padding: 20px 90px;
+    
+} */

@@ -13,33 +13,33 @@ function Navbar(){
     }
 
     return (
-        <div className="">
+        <div>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <Link class="navbar-brand" to="/">Navbar</Link>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item mx-3">
-          <Link class="nav-link active" aria-current="page" to={`/${user.role}`}>Mydashboard</Link>
-        </li>
-        
-        <li class="nav-item mx-3">
-          <Link class="nav-link active" aria-current="page" to="products">Products</Link>
-        </li>
-        
-         <button onClick={()=>{logout()}} className="btn btn-danger mx-5">Logout</button>
-       
+                <div class="container-fluid">
+                  <Link class="navbar-brand" to="/">Navbar</Link>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                      <li class="nav-item mx-3">
+                        <Link class="nav-link active" aria-current="page" to={`/${user.role}`}>Mydashboard</Link>
+                      </li>
+                      
+                      <li class="nav-item mx-3">
+                        <Link class="nav-link active" aria-current="page" to="products">Products</Link>
+                      </li>
+                      
+                      <button onClick={()=>{logout()}} className="btn btn-danger mx-5">Logout</button>
+                    
 
-        
-    
-      </ul>
-    </div>
-  </div>
-  </nav>
-        </div>
+                      
+                  
+                    </ul>
+                  </div>
+                </div>
+             </nav>
+      </div>
     )
 }
 export default Navbar

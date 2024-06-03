@@ -34,10 +34,10 @@ function Login(){
     return (
         <div>
             <div className="w-25 card shadow-lg">
-            <div className=" mt-5 text-center">
-            <i className="bi bi-image-alt  logo" ></i> 
-            <h3 className="text-light m-3">LOG IN</h3>
-            </div>
+               <div className=" mt-5 text-center">
+              <i className="bi bi-image-alt  logo" ></i> 
+              <h3 className="text-light m-3">LOG IN</h3>
+              </div>
             <div>
             <form onSubmit={loginForm.handleSubmit}>
                 <div id="inp">

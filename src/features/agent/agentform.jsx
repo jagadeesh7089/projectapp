@@ -1,6 +1,15 @@
 import { useFormik } from "formik";
 import React from "react";
+import { useSelector } from "react-redux";
+import { useAddLoanMutation, useGetAllloantypesQuery } from "../../service/loanAPI";
+import { useGetAllintrestQuery } from "../../service/intrestApi";
+import { useNavigate } from "react-router-dom";
 function AgentForm(){
+ var navigate= useNavigate()
+   var {isLoading:loanLoading,data:loandata}=useGetAllloantypesQuery()
+  var {isLoading:intrestLoading,data:intrestdata}= useGetAllintrestQuery()
+    var [addLoanFn]= useAddLoanMutation()
+   
 
    var agentform= useFormik({
     initialValues:{
@@ -10,27 +19,85 @@ function AgentForm(){
       "loanitem":"",
       "productcost":0,
       "intrest":null,
-      "downpayment":0,
+      "downpayment":0, 
       "status":[
         {
             "code":"applied",
             "timestamp":new Date().getTime()
-        }
+        } 
       ]
 
+    },
+    onSubmit:(values)=>{
+        values.intrest=JSON.parse(values.intrest)
+        console.log(values) 
+        addLoanFn(values).then(res=>{navigate(`/agent/`)})  
     }
    })
    
     return (
-        <div>
-            <h1>Agent Form</h1>
-            <form>
-                <input type="text" {...agentform.getFieldProps("customerMobile")}/><br/><br/>
-                <input type="text" {...agentform.getFieldProps("email")}/><br/><br/>
-                <input type="text" {...agentform.getFieldProps("typeofloan")}/><br/><br/>
-                <input type="text" {...agentform.getFieldProps("loanitem")}/><br/><br/>
-                <input type="text" {...agentform.getFieldProps("productcost")}/><br/><br/>
-            </form>
+      // #f7ca4559
+    <div className="shadow-lg p-5 " style={{width:"60%",  margin:"auto",marginTop:"10px",
+    backgroundColor:" rgb(227, 213, 231)",borderRadius:"20px",height:"600px",}}>
+      <div className="">
+        <h4 className="text-center  p-3 shadow-lg rounded-4  text-success fw-bold">Application  for Customer Loan</h4>
+      </div>
+
+    <form onSubmit={agentform.handleSubmit}>
+    <div class="row g-3 mt-3">
+  <div class="col"> 
+    <input type="text" class="form-control p-3 m-3 rounded-4 " placeholder="Mobile" aria-label="" {...agentform.getFieldProps("customerMobile")}/>
+  </div>
+  <div class="col">
+    <input type="email" class="form-control p-3 m-3 rounded-4 " placeholder="email@gmail.com" aria-label="Email"{...agentform.getFieldProps("email")} />
+  </div>
+</div>
+
+<div className="d-flex justify-content-evenly ">
+<div className="w-50">
+<select class="form-select form-select-lg mt-4  " aria-label="Large select example"{...agentform.getFieldProps("typeofloan")} >
+<option selected>Select the type of loan</option>
+  {
+    loandata?.map((type)=>{
+        return <option>{type}</option>
+    })
+  }
+</select>
+</div>
+<div className="w-50">
+<select class="form-select form-select-lg m-4  " aria-label="Large select example"{...agentform.getFieldProps("intrest")} >
+<option selected>Select the intreset</option>
+  {
+    intrestdata?.map((intrest)=>{
+        return <option value={JSON.stringify(intrest)}>{`${intrest.rateofinterest} % for ${intrest.tenure}${intrest.tenuretype}`}</option>
+    })
+  }
+</select>
+</div>
+</div>  
+
+<div class="row g-3">
+  <div class="col"> 
+    <input type="text" class="form-control p-3 m-3 rounded-4 " placeholder="Product Cost" aria-label="text" {...agentform.getFieldProps("productcost")}/>
+  </div>
+  <div class="col">
+    <input type="text" class="form-control p-3 m-3 rounded-4 " placeholder="Loanitem" aria-label="loanitem"{...agentform.getFieldProps("loanitem")} />
+  </div>
+</div>
+
+
+
+<div class="col">
+    <input type="text" class="form-control p-3 m-3 rounded-4 " placeholder="Downpayment" aria-label="loanitem"{...agentform.getFieldProps("downpayment")} />
+  </div>
+
+
+
+
+
+   <center><button className="btn btn-success mt-4">Apply Loan</button></center>
+
+</form>
         </div>
     )
 }

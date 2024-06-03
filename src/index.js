@@ -9,15 +9,14 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Posts from './features/posts/posts';
-import Courses from './features/courses/courses';
-import Home from './features/home/home';
-import Main from './features/home/Main';
+
 import Products from './features/products/products';
 import Manager from './features/manager/manager';
 import Agent from './features/agent/agent';
 import Customer from './features/customer/customer';
 import AgentForm from './features/agent/agentform';
+import Managerhome from './features/manager/managerHome';
+import Agenthome from './features/agent/agentHome';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,13 +24,24 @@ const router = createBrowserRouter([
     children:[
       {
         path:"/manager",
-        element:<Manager></Manager>
+        element:<Manager></Manager>,
+        children:[
+          {
+            path:"/manager/",
+            element:<Managerhome></Managerhome>
+          }
+        ]
+
 
       },
       {
         path:"/agent",
         element:<Agent></Agent>,
         children:[
+          {
+            path:"/agent/",
+            element:<Agenthome></Agenthome>
+          },
           {
             path:"/agent/agentform",
             element:<AgentForm></AgentForm>
@@ -44,14 +54,8 @@ const router = createBrowserRouter([
         element:<Customer></Customer>
 
       },
-      {
-      path:"/posts",
-      element:<Posts></Posts>
-    },
-    {
-      path:"/courses",
-      element:<Courses></Courses>
-    },
+      
+    
     {
       path:"/products",
       element:<Products></Products>

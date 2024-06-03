@@ -10,12 +10,13 @@ function App() {
  var {isLoggedin}= useSelector(state=>state.loginReducer)
 
   return (
-    <div>
+    <div id='bgim'>
       {isLoggedin && <Home></Home>}
       {!isLoggedin && <Login></Login>}
     
       
     </div>
+    
   );
 }
 
