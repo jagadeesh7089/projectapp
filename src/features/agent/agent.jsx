@@ -10,7 +10,7 @@ function Agent(){
     // navigate(`/agent/`)
     return(
         <div className=" border border-warning " >
-        <div className="d-flex justify-content-between p-2 " >
+        <div className="d-flex justify-content-between p-2 bg bg-primary " >
             <h2 className="text-danger fw-bold">Agent Dashboard</h2>
           <button onClick={()=>{agentform()}} className="btn btn-success border border-2 border-light">AddLoan</button>
           

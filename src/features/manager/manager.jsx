@@ -5,7 +5,7 @@ function Manager(){
     return(
         <div>
             
-            <h1 className="bg bg-info p-2 text-warning">Manager Dashboard</h1>
+            <h2 className="bg bg-primary p-2 text-warning">Manager Dashboard</h2>
           
             <Outlet></Outlet>
         </div>

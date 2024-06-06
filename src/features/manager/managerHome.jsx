@@ -1,6 +1,8 @@
 import React from "react";
 import { useGetAllloansQuery, useUpdateLoanMutation } from "../../service/loanAPI";
+import { useNavigate } from "react-router-dom";
 function Managerhome(){
+   var navigate= useNavigate()
    var {isLoading,data}=useGetAllloansQuery()
    var [updateloanFn]=useUpdateLoanMutation()
    console.log(isLoading)
@@ -13,7 +15,9 @@ function Managerhome(){
          timestamp:Date.now()
 
     })
-    updateloanFn(temp).then(res=>{console.log(temp)})
+    updateloanFn (temp).then(res=>{
+        navigate(`/manager/`)
+    })
    
    }
     return(
@@ -21,7 +25,7 @@ function Managerhome(){
             <div className="m-1">
                 <table className="table table-striped ">
                     <thead>
-                        <tr className="table-danger">
+                        <tr className="table-danger ">
                             <th className="p-3">#</th>
                             <th className="p-3">Email</th>
                             <th className="p-3">Mobile</th>
@@ -51,16 +55,25 @@ function Managerhome(){
                                             [...loan.status].sort((a,b)=>{return a.timestmap<b.timestamp ? 1:-1})[0].code==="applied" &&
                                              <>
                                                 <button className="btn btn-success m-1" onClick={()=>{approve(loan)}}>Approve</button>
-                                                <button className="btn  btn-danger">Reject</button>
+                                                {/* <button className="btn  btn-danger">Reject</button> */}
                                             </>
                                         }
                                         {
                                             [...loan.status].sort((a,b)=>{return a.timestmap<b.timestamp ? 1:-1})[0].code==="approved" &&
                                              <>
-                                                <button className="btn btn-warning">...Waiting for downpayment</button>
+                                                <button className="btn btn-info">...Waiting for downpayment</button>
                                                 {/* <button className="btn  btn-danger">Reject</button> */}
                                             </>
                                         }
+                                        {
+                                            [...loan.status].sort((a,b)=>{return a.timestmap<b.timestamp ? 1:-1})[0].code==="downpayment received" &&
+                                             <>
+                                                <button className="btn btn-warning">Disbursed</button>
+                                                {/* <button className="btn  btn-danger">Reject</button> */}
+                                            </>
+                                        }
+                                         
+                                         <button className="btn btn-danger m-2">Reject</button>
                                           
                                         
                                     </td>

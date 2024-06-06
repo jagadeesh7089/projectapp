@@ -17,6 +17,7 @@ import Customer from './features/customer/customer';
 import AgentForm from './features/agent/agentform';
 import Managerhome from './features/manager/managerHome';
 import Agenthome from './features/agent/agentHome';
+import Downpayment from './features/agent/agent down';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
           {
             path:"/agent/agentform",
             element:<AgentForm></AgentForm>
+          },
+          {
+            path:"/agent/downpayment",
+            element:<Downpayment></Downpayment>
           }
         ]
 
