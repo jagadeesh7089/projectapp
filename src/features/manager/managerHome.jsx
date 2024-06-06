@@ -20,6 +20,28 @@ function Managerhome(){
     })
    
    }
+
+    function disburse(loan){
+        var temp=JSON.parse(JSON.stringify(loan))
+        temp.status.push({
+            code:"disbursed",
+            timestamp:Date.now()
+        })
+
+        var emis=[]
+         var totalintrest=(temp.productcost-temp.downpayment)*temp.intrest.rateofinterest/100
+        var totalLoanAmount=(temp.productcost-temp.downpayment)+totalintrest
+        var emi=totalLoanAmount/temp.intrest.tenure
+
+        for(var i=1;i<=temp.intrest.tenure;i++){
+            emis.push({
+                emiAmount:emi,
+                emiDate: Date.now()+(30*24*60*60*1000)*i
+            })
+        }
+        temp.emis=[...emis]
+        updateloanFn(temp).then(res=>{console.log(res.data)})
+    }
     return(
         <div>
             <div className="m-1">
@@ -68,7 +90,7 @@ function Managerhome(){
                                         {
                                             [...loan.status].sort((a,b)=>{return a.timestmap<b.timestamp ? 1:-1})[0].code==="downpayment received" &&
                                              <>
-                                                <button className="btn btn-warning">Disbursed</button>
+                                                <button className="btn btn-warning" onClick={()=>{disburse(loan)}}>Disbursed</button>
                                                 {/* <button className="btn  btn-danger">Reject</button> */}
                                             </>
                                         }
