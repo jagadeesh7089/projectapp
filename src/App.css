@@ -3,15 +3,18 @@ body{
     overflow-x: hidden;
 
     /* width: 100vw; */
-    background: rgb(235, 195, 245);
-    background: rgb(227, 213, 231);
+    /* background: rgb(235, 195, 245); */
+    background: rgb(244, 236, 246);
    
 
 }
+.hei{
+    height:400px
+}
 .card{
-    margin-top:8%;
+    /* margin-top:8%; */
    
-    margin-left: 35%;
+    /* margin-left: 35%; */
     background: rgb(164,34,195);
 background: linear-gradient(0deg, rgba(164,34,195,1) 38%, rgba(201,53,222,1) 100%);
 
@@ -66,8 +69,9 @@ input{
     margin-top: 8%;
 
 }
-/* .in{
-    width:100%;
-    padding: 20px 90px;
-    
-} */
+.bacimg{
+    background-image: url("https://wallpaperaccess.com/full/4106069.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 740px;
+}

@@ -13,7 +13,7 @@ export const productsApi = createApi({
             return headers
          }
 
-    }
+    }   
 ),
   endpoints: (builder) => ({
     getAllproducts: builder.query({

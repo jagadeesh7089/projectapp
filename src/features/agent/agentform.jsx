@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import React from "react";
 import { useSelector } from "react-redux";
-import { useAddLoanMutation, useGetAllloantypesQuery } from "../../service/loanAPI";
+import { useAddLoanMutation, useAddUserMutation, useGetAllloantypesQuery } from "../../service/loanAPI";
 import { useGetAllintrestQuery } from "../../service/intrestApi";
 import { useNavigate } from "react-router-dom";
 function AgentForm(){
@@ -9,6 +9,7 @@ function AgentForm(){
    var {isLoading:loanLoading,data:loandata}=useGetAllloantypesQuery()
   var {isLoading:intrestLoading,data:intrestdata}= useGetAllintrestQuery()
     var [addLoanFn]= useAddLoanMutation()
+      var[addUserFn]= useAddUserMutation()
    
 
    var agentform= useFormik({
@@ -31,14 +32,20 @@ function AgentForm(){
     onSubmit:(values)=>{
         values.intrest=JSON.parse(values.intrest)
         console.log(values) 
-        addLoanFn(values).then(res=>{navigate(`/agent/`)})  
+        addLoanFn(values).then(res=>{navigate(`/agent/`)})
+        addUserFn({
+          username: values.email,
+          password: 123,
+          role: "customer",
+          mobile:values.customerMobile 
+        })  
     }
    })
    
     return (
       // #f7ca4559
     <div className="shadow-lg p-5 " style={{width:"60%",  margin:"auto",marginTop:"10px",
-    backgroundColor:" rgb(227, 213, 231)",borderRadius:"20px",height:"600px",}}>
+    backgroundColor:" rgb(244 ,236 ,246)",borderRadius:"20px",height:"600px",}}>
       <div className="">
         <h4 className="text-center  p-3 shadow-lg rounded-4  text-success fw-bold">Application  for Customer Loan</h4>
       </div>

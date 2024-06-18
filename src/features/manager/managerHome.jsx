@@ -1,14 +1,16 @@
 import React from "react";
-import { useGetAllloansQuery, useUpdateLoanMutation } from "../../service/loanAPI";
+import { useGetAllloansQuery, useLazyGetAllloansQuery, useUpdateLoanMutation } from "../../service/loanAPI";
 import { useNavigate } from "react-router-dom";
 function Managerhome(){
    var navigate= useNavigate()
    var {isLoading,data}=useGetAllloansQuery()
    var [updateloanFn]=useUpdateLoanMutation()
+   var[lazyLoanFn]=useLazyGetAllloansQuery()
+
    console.log(isLoading)
    console.log(data)
 
-   function approve(loan){
+    function approve(loan){
     var temp=JSON.parse(JSON.stringify(loan))
     temp.status.push({
         code:"approved",
@@ -16,7 +18,7 @@ function Managerhome(){
 
     })
     updateloanFn (temp).then(res=>{
-        navigate(`/manager/`)
+       lazyLoanFn()
     })
    
    }
@@ -40,7 +42,7 @@ function Managerhome(){
             })
         }
         temp.emis=[...emis]
-        updateloanFn(temp).then(res=>{console.log(res.data)})
+        updateloanFn(temp).then(res=>{lazyLoanFn()})
     }
     return(
         <div>
@@ -93,6 +95,9 @@ function Managerhome(){
                                                 <button className="btn btn-warning" onClick={()=>{disburse(loan)}}>Disbursed</button>
                                                 {/* <button className="btn  btn-danger">Reject</button> */}
                                             </>
+                                        }
+                                        {
+                                           [...loan.status].sort((a,b)=>{return a.timestamp<b.timestamp? 1:-1})[0].code==="disbursed"&&<i>emis Pending...</i> 
                                         }
                                          
                                          <button className="btn btn-danger m-2">Reject</button>

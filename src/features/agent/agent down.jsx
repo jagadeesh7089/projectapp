@@ -1,9 +1,10 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-import { useUpdateLoanMutation } from "../../service/loanAPI";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useLazyGetAllloansQuery, useUpdateLoanMutation } from "../../service/loanAPI";
  
 function Downpayment(){
-
+var navigate=useNavigate()
+    var [lazyLoanFn]=useLazyGetAllloansQuery()
   var [updatepayFn]= useUpdateLoanMutation()
   
   
@@ -17,7 +18,10 @@ function Downpayment(){
                 timestamp:Date.now()
             })
 
-            updatepayFn(temp).then(res=>{console.log(res.data)})
+            updatepayFn(temp).then(res=>{
+                navigate(`/agent/`)
+                lazyLoanFn()
+            })
             
         }
     return (

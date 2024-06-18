@@ -18,13 +18,17 @@ export const loanApi = createApi({
     getAllloantypes: builder.query({
       query: () => `/loanTypes`,
     }),
-    getAllloans: builder.query({
+     getAllloans: builder.query({
       query: () => `/loans`,
+    }),
+
+     getLoanbyMobile: builder.query({
+      query: (mobile) => `/loans?customerMobile=${mobile}`,
     }),
 
     addLoan: builder.mutation({
         query:(loan)=>{
-          return {
+          return{
             url: `/loans`,
             method: 'POST',
             body:loan
@@ -32,6 +36,18 @@ export const loanApi = createApi({
         },
         
       }),
+    addUser: builder.mutation({
+        query:(user)=>{
+          return {
+            url: `/users`,
+            method: 'POST',
+            body:user
+          }
+        },
+        
+      }),
+
+
     updateLoan: builder.mutation({
         query:(loan)=>{
           return {
@@ -46,4 +62,12 @@ export const loanApi = createApi({
 
 })
 
-export const { useGetAllloantypesQuery,useAddLoanMutation,useGetAllloansQuery,useUpdateLoanMutation} =loanApi
+export const { 
+  useGetAllloantypesQuery,
+  useAddLoanMutation,
+  useGetAllloansQuery,
+  useUpdateLoanMutation,
+  useLazyGetAllloansQuery,
+  useAddUserMutation,
+  useGetLoanbyMobileQuery,
+} =loanApi
