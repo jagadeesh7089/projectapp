@@ -1,6 +1,6 @@
 import React from "react";
 import { useGetAllloansQuery } from "../../service/loanAPI";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 function Agenthome(){
    var navigate= useNavigate()
    var {isLoading,data}=useGetAllloansQuery()
@@ -19,6 +19,7 @@ function Agenthome(){
    }
     return(
         <div>
+            <div style={{position:"absolute",width:"700px", margin:"auto"}}><Outlet></Outlet></div>
             <div className="m-1">
                 <table className="table table-striped ">
                     <thead>
@@ -34,9 +35,9 @@ function Agenthome(){
                     </thead>
                     <tbody>
                          {
-                            data?.map(loan=>{
+                            data?.map((loan,i)=>{
                                 return <tr>
-                                    <td className="p-3">{loan.id}</td>
+                                    <td className="p-3">{i+1}</td>
                                     <td className="p-3">{loan.email}</td>
                                     <td className="p-3">{loan.customerMobile}</td>
                                     <td className="p-3">{loan.loanitem}</td>
@@ -58,6 +59,7 @@ function Agenthome(){
                          }
                   </tbody>
                 </table>
+                
             </div>
               
 

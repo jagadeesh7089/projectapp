@@ -42,16 +42,19 @@ const router = createBrowserRouter([
         children:[
           {
             path:"/agent/",
-            element:<Agenthome></Agenthome>
+            element:<Agenthome></Agenthome>,
+            children:[
+              {
+                path:"/agent/downpayment",
+                element:<Downpayment></Downpayment>
+              }
+            ]
           },
           {
             path:"/agent/agentform",
             element:<AgentForm></AgentForm>
           },
-          {
-            path:"/agent/downpayment",
-            element:<Downpayment></Downpayment>
-          }
+          
         ]
 
       },

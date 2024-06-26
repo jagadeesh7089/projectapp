@@ -62,9 +62,9 @@ function Managerhome(){
                     </thead>
                     <tbody>
                          {
-                            data?.map(loan=>{
+                            data?.map((loan,i)=>{
                                 return <tr>
-                                    <td className="p-3">{loan.id}</td>
+                                    <td className="p-3">{i+1}</td>
                                     <td className="p-3">{loan.email}</td>
                                     <td className="p-3">{loan.customerMobile}</td>
                                     <td className="p-3">{loan.typeofloan}</td>

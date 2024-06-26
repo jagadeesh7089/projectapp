@@ -70,4 +70,5 @@ export const {
   useLazyGetAllloansQuery,
   useAddUserMutation,
   useGetLoanbyMobileQuery,
+  useLazyGetLoanbyMobileQuery,
 } =loanApi
