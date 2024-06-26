@@ -6,7 +6,7 @@ function CustomerHome(){
  var[updateLoanFn]= useUpdateLoanMutation()
   var {user} = useSelector(state=>state.loginReducer)
   var{isLoading,data}=useGetLoanbyMobileQuery(user.mobile)
- var[lazyLoanFn]= useLazyGetLoanbyMobileQuery()
+ var[lazyLoanFn]=useLazyGetLoanbyMobileQuery()
   console.log(data)
   function payemi(cdate){
     var temp=JSON.parse(JSON.stringify(data[0]))
@@ -27,9 +27,9 @@ function CustomerHome(){
         <div>
             
             <div className="d-flex">
-                <div className="w-50  border border-warning  bg bg-warning">
+                <div className="w-50  border border-warning  bg bg-warning ">
                      <div> <h3 className="text-center">Customer Details </h3></div>
-                     <div className="bg bg-light shadow-lg m-auto w-75">
+                     <div className="bg bg-light shadow-lg m-auto w-75 p-5">
                        {
                         !isLoading && data.map(cus=>{   
                             return <table>
@@ -61,7 +61,7 @@ function CustomerHome(){
                      </div>
 
                 </div>
-                <div  style={{textAlign:"center",width:"50%",border:"1px solid red",margin:"10px",height:"600px",overflow:"scroll"}}>
+                <div  style={{textAlign:"center",width:"50%",border:"1px solid red",margin:"10px",height:"580px",overflow:"scroll"}}>
                     <h1 style={{color:"green"}}>Status</h1>
                      <table className="table table-striped">
                         <thead>
